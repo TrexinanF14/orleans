@@ -247,7 +247,7 @@ namespace Orleans.Storage
                     data.Length, entity.PartitionKey, entity.RowKey);
 
                 // each Unicode character takes 2 bytes
-                dataSize = data.Length * 2;
+                dataSize = Encoding.UTF8.GetByteCount(data);
 
                 properties = SplitStringData(data).Select(t => new EntityProperty(t));
                 basePropertyName = STRING_DATA_PROPERTY_NAME;
